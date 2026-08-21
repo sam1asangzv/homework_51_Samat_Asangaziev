@@ -19,6 +19,7 @@ public class Program
         {
             MobileContext context = scope.ServiceProvider.GetRequiredService<MobileContext>();
             context.Database.Migrate();
+            SeedData.Initialize(context);
         }
 
         // Configure the HTTP request pipeline.
