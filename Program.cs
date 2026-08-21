@@ -15,6 +15,12 @@ public class Program
         builder.Services.AddDbContext<MobileContext>(options => options.UseSqlite(connection));
         var app = builder.Build();
 
+        using (IServiceScope scope = app.Services.CreateScope())
+        {
+            MobileContext context = scope.ServiceProvider.GetRequiredService<MobileContext>();
+            context.Database.Migrate();
+        }
+
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
