@@ -1,0 +1,79 @@
+@model WebApplication1.Models.Phone
+@using WebApplication1.Models
+
+@{
+    ViewData["Title"] = "Details";
+    List<Currency> currencies = ViewBag.Currencies as List<Currency> ?? new List<Currency>();
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Phone</h4>
+    <hr />
+    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="@Model.Name" class="phone-detail-image" />
+    }
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+    </dl>
+</div>
+
+@if (currencies.Count > 0)
+{
+    <h4>Price in currencies</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Currency</th>
+            <th>Code</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Currency currency in currencies)
+        {
+            <tr>
+                <td>@currency.CurrencyName</td>
+                <td>@currency.CurrencyCode</td>
+                <td>@((Model.Price * (decimal)currency.CurrencyRate).ToString("0.##"))</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
