@@ -2,14 +2,14 @@
 @using WebApplication1.Models
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Подробнее";
     List<Currency> currencies = ViewBag.Currencies as List<Currency> ?? new List<Currency>();
 }
 
-<h1>Details</h1>
+<h1>Подробнее о телефоне</h1>
 
 <div>
-    <h4>Phone</h4>
+    <h4>Телефон</h4>
     <hr />
     @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
     {
@@ -51,13 +51,13 @@
 
 @if (currencies.Count > 0)
 {
-    <h4>Price in currencies</h4>
+    <h4>Цена в валютах</h4>
     <table class="table">
         <thead>
         <tr>
-            <th>Currency</th>
-            <th>Code</th>
-            <th>Price</th>
+            <th>Валюта</th>
+            <th>Код</th>
+            <th>Цена</th>
         </tr>
         </thead>
         <tbody>
@@ -74,6 +74,6 @@
 }
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Редактировать</a> |
+    <a asp-action="Index">Назад к списку</a>
 </div>

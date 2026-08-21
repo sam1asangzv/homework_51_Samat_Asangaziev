@@ -1,25 +1,25 @@
 @model IEnumerable<WebApplication1.Models.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Заказы";
 }
 
-<h1>Orders</h1>
+<h1>Заказы</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Имя покупателя
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                Адрес доставки
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactPhone)
+                Номер телефона
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone.Name)
+                Смартфон
             </th>
         </tr>
     </thead>

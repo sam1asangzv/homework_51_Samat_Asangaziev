@@ -1,11 +1,13 @@
 ﻿@model WebApplication1.ViewModels.PhonesWithOrders
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Главная";
 }
 
 <div class="text-center">
-    @{ await Html.RenderPartialAsync("_GetMessage", new List<string>() { "qwe", "asd", "zxc" }); }
-    <h1 class="display-4">@Model.Phones[0].Name</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Магазин смартфонов</h1>
+    <p>В каталоге можно добавлять телефоны, смотреть подробную информацию, оформлять заказы и видеть цену в разных валютах.</p>
+    <p>
+        <a asp-controller="Phone" asp-action="Index" class="btn btn-primary">Перейти к телефонам</a>
+    </p>
 </div>
